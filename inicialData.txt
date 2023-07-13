@@ -5,6 +5,13 @@
   "correo_persona": "santi26reyes@gmail.com",
   "contraseña": "saregom123"
 }
+{
+  "nombre_persona": "Julian Vargas",
+  "numero_telefonico": 3109876353,
+  "tipo_persona": "CLIENTE",
+  "correo_persona": "ogidospuntosuve@gmail.com",
+  "contraseña": "ogi123"
+}
 
 {
   "pais": "Colombia",

@@ -8,7 +8,7 @@
         {% if session['user_type'] == 'CLIENTE' %}
             <a href="/products">Productos</a>
         {% elif session['user_type'] == 'ADMIN' %}
-            <a href="/admin-products">Manejar productos</a>
+            <a href="/manage-products">Manejar productos</a>
         {% endif %}
 
         {% if session['user_type'] == 'CLIENTE' %}
@@ -17,7 +17,12 @@
             <a href="/manage-shipments">Envios pendiendtes</a>
         {% endif %}
 
-        {% if session['user_type'] == 'CLIENTE' %}
+        {% if session['user_type'] == 'ADMIN' %}
+            <a href="/orders">Mis pedidos</a>
+            <a href="/manage-shipments">Envios pendiendtes</a>
+        {% endif %}
+
+        {% if session['user_type'] == 'CLIENTE' or session['user_type'] == 'ADMIN' %}
             <a href="/shipments">Mis envios</a>
         {% endif %}
 

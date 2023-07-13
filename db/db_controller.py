@@ -95,6 +95,27 @@ def delete_direccion(id_direccion):
 
 
 # ---------------- PRODUCTOS ----------------
+def get_productos():
+    db = get_db()
+    cursor = db.cursor()
+    query = "SELECT id_producto, nombre_producto, categoria, talla, marca, precio, cantidad_disponible FROM productos"
+    cursor.execute(query)
+    return cursor.fetchall()
+
+def get_producto_by_id(id_producto):
+    db = get_db()
+    cursor = db.cursor()
+    query = "SELECT id_producto, nombre_producto, categoria, talla, marca, precio, cantidad_disponible FROM productos WHERE id_producto = ?"
+    cursor.execute(query, [id_producto])
+    return cursor.fetchone()
+
+def get_productos_by_talla(talla):
+    db = get_db()
+    cursor = db.cursor()
+    query = "SELECT id_producto, nombre_producto, categoria, talla, marca, precio, cantidad_disponible FROM productos WHERE talla = ?"
+    cursor.execute(query, [talla])
+    return cursor.fetchall()
+
 def insert_producto(nombre_producto, categoria, talla, marca, precio, cantidad_disponible):
     db = get_db()
     cursor = db.cursor()
@@ -119,19 +140,8 @@ def delete_producto(id_producto):
     db.commit()
     return True
 
-def get_producto_by_id(id_producto):
-    db = get_db()
-    cursor = db.cursor()
-    query = "SELECT id_producto, nombre_producto, categoria, talla, marca, precio, cantidad_disponible FROM productos WHERE id_producto = ?"
-    cursor.execute(query, [id_producto])
-    return cursor.fetchone()
 
-def get_productos():
-    db = get_db()
-    cursor = db.cursor()
-    query = "SELECT id_producto, nombre_producto, categoria, talla, marca, precio, cantidad_disponible FROM productos"
-    cursor.execute(query)
-    return cursor.fetchall()
+
 
 
 # ---------------- ENVIOS ----------------
@@ -225,13 +235,6 @@ def get_pedidos_by_id_persona(persona_id_persona):
     query = "SELECT id_pedido, fecha_pedido, total_pedido, persona_id_persona, envio_id_envio FROM pedidos WHERE persona_id_persona = ?"
     cursor.execute(query, [persona_id_persona])
     return cursor.fetchall()
-
-""" def get_pedidos_by_id_envio(id_envio):
-    db = get_db()
-    cursor = db.cursor()
-    query = "SELECT id_pedido, total_pedido FROM pedidos WHERE envio_id_envio = ?"
-    cursor.execute(query, [id_envio])
-    return cursor.fetchall() """
 
 def insert_pedido(fecha_pedido, total_pedido, persona_id_persona, envio_id_envio):
     db = get_db()

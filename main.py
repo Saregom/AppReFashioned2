@@ -129,7 +129,7 @@ def addProduct(idProd):
     if request.method == 'POST':
         product = db_controller.get_producto_by_id(idProd)
         cart.addProduct({'id_producto':idProd, 'precio':int(product[5]), 'nombre':product[1], 'cantidad':int(request.form['quantity'])})
-
+        
     return redirect('/products')
 
 @app.route('/delProduct/<int:id>', methods=['POST'])
@@ -138,17 +138,27 @@ def delProduct(id):
     return redirect('/products')
 
 
-@app.route('/products')
+@app.route('/products', methods=['GET', 'POST'])
 def products():
+    products = []
     products = person_cont.formatProductos(db_controller.get_productos())
+    
+    if request.method == 'POST':
+        if request.form["talla"] != "on" and request.form["talla"] != "todas":
+            products = person_cont.formatProductos(db_controller.get_productos_by_talla(request.form["talla"]))
+        
     return render_template('products.html', products = products, cartProducts = cart.cartProducts)
 
-""" @app.route('/admin-products')
-def adminProducts():
-    products = [{'Nombre':'Pantalon', 'Precio':50000}, 
-                {'Nombre':'Camisa', 'Precio':20000}]
 
-    return render_template('adminProducts.html', products = products) """
+@app.route('/manage-products', methods=['GET', 'POST'])
+def adminProducts():
+    
+    if request.method == 'POST':
+        data = request.form
+        db_controller.insert_producto(data["nombre_producto"],data["categoria"],data["talla"], data["marca"], data["precio"], data["cantidad_disponible"])
+        # return redirect('/home')
+    products = person_cont.formatProductos(db_controller.get_productos())
+    return render_template('manage-products.html', products = products, cartProducts = cart.cartProducts) 
 
 
 @app.route('/orders', methods=['GET', 'POST'])

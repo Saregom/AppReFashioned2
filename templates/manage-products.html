@@ -7,22 +7,15 @@
 {% block content %} 
     <div class="container-page">
         <aside class="aside-left">
-            <h4>Filtros</h4>
-            <form action="/products" method="post">
-                <h6>Talla</h6>
-                    <div>
-                        <input type="radio" name="talla" id="todas" value="todas" checked> <label for="todas">Todas</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="talla" id="S" value="S"> <label for="S">S</label>    
-                    </div>
-                    <div>
-                        <input type="radio" name="talla" id="M" value="M"> <label for="M">M</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="talla" id="L" value="L"> <label for="L">L</label>
-                    </div>
-                    <input type="submit" name="aplicar" id="" value="Aplicar filtro"> 
+            <h4>Nuevo prodcuto</h4>
+            <form action="" method="post">
+                <input type="text" name="nombre_producto" id="" value="" placeholder="Nombre" required>
+                <input type="text" name="categoria" id="" value="" placeholder="categoria" required>
+                <input type="text" name="talla" id="" value="" placeholder="talla" required>
+                <input type="text" name="marca" id="" value="" placeholder="marca" required>
+                <input type="number" name="precio" id="" value="" placeholder="precio" required>
+                <input type="number" name="cantidad_disponible" id="" value="" placeholder="cantidad disponible" required>
+                <input type="submit" name="crear" id="" value="Añadir producto">
             </form>
             <h4>Carrito de compras</h4>
             {% for cartProduct in cartProducts %}
