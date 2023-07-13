@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %} Login {% endblock %}
+
+{% block content %} 
+    {% if alert %}
+    <script>alert('{{alert}}')</script>
+    {% endif %}
+    <img class="logo_ReFashioned" src="/static/img/logo_ReFashioned_v2_733.png" alt="">
+    <div class="container-signin">
+        <p>Nueva cuenta</p>
+        <form action="", method="post">
+            <div class="row">
+                <div class="col">
+                    <input class="inp-login" type="text" name="name" placeholder="Nombre" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input class="inp-login" type="email" name="email" placeholder="Correo" required>
+                </div>
+                <div class="col-5">
+                    <input class="inp-login" type="number" name="cellphone" placeholder="Num. telefono" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input class="inp-login" type="password" name="password" placeholder="Contraseña" required>
+                </div>
+                <div class="col">
+                    <input class="inp-login" type="password" name="confirm_password" placeholder="Confirmar contraseña" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input class="inp-login" type="text" name="country" placeholder="Pais" required>
+                </div>
+                <div class="col">
+                    <input class="inp-login" type="text" name="city" placeholder="Ciudad" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input class="inp-login" type="text" name="department" placeholder="Departamento" required>
+                </div>
+                <div class="col">
+                    <input class="inp-login" type="text" name="postal_code" placeholder="Codigo postal" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input class="inp-login" type="text" name="adress" placeholder="Direccion" required>
+                </div>
+                <div class="col">
+                    <input class="inp-login" type="text" name="aditional_info" placeholder="Informacion adicional" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <input class="inp-btn btn-green" type="submit" value="Registrarme">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a href="/login"><input class="inp-btn btn-blue" type="button" value="Ya tengo una cuenta"></a>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'home.html' %}
+{% block title %} Actualizar cuenta {% endblock %}
+
+{% block front_page %}
+{% endblock %}
+
+{% block content %} 
+<div class="container-signin">
+    <p>Actualizar datos personales</p>
+    <form action="", method="post">
+        <div class="row">
+            <div class="col">
+                <input class="inp-login" type="text" name="name" placeholder="Nombre" value="{{user.nombre_persona}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input class="inp-login" type="email" name="email" placeholder="Correo" value="{{user.correo_persona}}" disabled >
+            </div>
+            <div class="col-5">
+                <input class="inp-login" type="number" name="cellphone" placeholder="Num. telefono" value="{{user.numero_telefonico}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input class="inp-login" type="text" name="country" placeholder="Pais" value="{{adress.pais}}">
+            </div>
+            <div class="col">
+                <input class="inp-login" type="text" name="city" placeholder="Ciudad" value="{{adress.ciudad}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input class="inp-login" type="text" name="department" placeholder="Departamento" value="{{adress.departamento}}">
+            </div>
+            <div class="col">
+                <input class="inp-login" type="text" name="postal_code" placeholder="Codigo postal" value="{{adress.codigo_postal}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input class="inp-login" type="text" name="adress" placeholder="Direccion" value="{{adress.direccion}}">
+            </div>
+            <div class="col">
+                <input class="inp-login" type="text" name="aditional_info" placeholder="Informacion adicional" value="{{adress.complemento}}">
+            </div> 
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <input class="inp-btn btn-green" type="submit" value="Actualizar">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <a href="/account"><button class="inp-btn btn-blue" type="button">Volver</button></a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

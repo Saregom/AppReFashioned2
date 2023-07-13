@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+
+{% block navbar %} 
+<div class="container-page-nav">
+    <div class="page-nav">
+        <a href="/home"><img src="/static/img/logo_ReFashioned_v2_733.png"></a>
+        {% if session['user_type'] == 'CLIENTE' %}
+            <a href="/products">Productos</a>
+        {% elif session['user_type'] == 'ADMIN' %}
+            <a href="/admin-products">Manejar productos</a>
+        {% endif %}
+
+        {% if session['user_type'] == 'CLIENTE' %}
+            <a href="/orders">Mis pedidos</a>
+        {% elif session['user_type'] == 'MANAGER' %}
+            <a href="/manage-shipments">Envios pendiendtes</a>
+        {% endif %}
+
+        {% if session['user_type'] == 'CLIENTE' %}
+            <a href="/shipments">Mis envios</a>
+        {% endif %}
+
+        <a class="nav-user-type" href="/account">{{session['user_type']}}</a>
+        <label for="">|</label>
+        <a class="nav-account" href="/account"><img class='avatar' src='static/img/avatar.png' alt='Profile'></img></a>
+    </div>
+</div>
+{% endblock %}
+
+{% block front_page %}
+<div class="div-portada">
+    <img class="img-portada" src="static/img/portada.png" alt="">
+</div>
+{% endblock %}
+
+
+{% block content %} 
+{% endblock %}

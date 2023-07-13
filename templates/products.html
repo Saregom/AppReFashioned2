@@ -1,0 +1,81 @@
+{% extends 'home.html' %}
+{% block title %} Products {% endblock %}
+
+{% block front_page %}
+{% endblock %}
+
+{% block content %} 
+    <div class="container-page">
+        <aside class="aside-left">
+            <h4>Filtros</h4>
+            <h6>Precio</h6>
+                <input type="number" name="" id="" placeholder="Min">
+                <input type="number" name="" id="" placeholder="Max">
+            <h6>Talla</h6>
+                <div>
+                    <input type="checkbox" name="talla" id=""> <label for="S">S</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="talla" id=""> <label for="M">M</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="talla" id=""> <label for="L">L</label>
+                </div>
+            <h6>Categoria</h6>
+            <div>
+                <input type="checkbox" name="cateoria" id=""> <label for="pantalones">Pantalones</label>
+            </div>
+            <div>
+                <input type="checkbox" name="cateoria" id=""> <label for="camisas">Camisas</label>
+            </div>
+            <div>
+                <input type="checkbox" name="cateoria" id=""> <label for="zapatos">Zapatos</label>
+            </div>  
+
+            <h4>Carrito de compras</h4>
+            {% for cartProduct in cartProducts %}
+                <div class="product">
+                    <div>
+                        <p>{{cartProduct.product.nombre}}</p>
+                    </div>
+                    <div>
+                        <label for="">X {{cartProduct.product.cantidad}}</label>
+                        <form action="/delProduct/{{cartProduct.id}}" method="post">
+                            <input class="inp-icon-trash" type="image" src="static/Icons/trash-can-regular.svg" value="">
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+            {% if cartProducts|length != 0 %}
+                <form action="/orders" >
+                    <input class="btn-do-order" type="submit" value="Realizar pedido">
+                </form>
+            {% endif %}
+        </aside>
+
+        <main class="main-page">
+            <h3>Productos</h3>
+            <div class="div-products">
+                {% for product in products %}
+                    <div class="product">
+                        <div>
+                            <p><b>Nombre:</b>  {{product.nombre_producto}}</p>
+                            <p><b>Precio:</b> {{product.precio}}$</p>
+                            <p><b>Categoria:</b> {{product.categoria}}</p>
+                            <p><b>Talla:</b> {{product.talla}}</p>
+                            <p><b>Marca:</b> {{product.marca}}</p>
+                            <p><b>Stock:</b> {{product.cantidad_disponible}}</p>
+                        </div>
+                        <div>
+                            <form action="/addProduct/{{product.id_producto}}" method="post">
+                                <label for="">Cantidad:</label>
+                                <input class="inp-quantity" type="number" name="quantity" id="" value="1">
+                                <input class="inp-icon-shop" type="image" src="static/icons/cart-arrow-down-solid.svg" title="agregar al carrito">
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </main>
+    </div>
+{% endblock %}

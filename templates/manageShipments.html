@@ -1,0 +1,52 @@
+{% extends 'home.html' %}
+{% block title %} Envios pendiendtes {% endblock %}
+
+{% block front_page %}
+{% endblock %}
+
+{% block content %} 
+    <div class="container-page">
+        <aside class="aside-left">
+            <h4>Filtros</h4>
+            <h6>Estado</h6>
+                <div>
+                    <input type="checkbox" name="estado" id="" checked> <label for="S">Pendiente</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="estado" id=""> <label for="M">Entregado</label>
+                </div>
+        </aside>
+
+        <main class="main-page">
+            <h3>Envios Pendientes</h3>
+            <div class="div-shipments">
+                <div class="shipment">
+                    {% for shipment in shipments %}
+                        <div class="shipment-header">
+                            <label>Id envio: {{shipment.id_envio}}</label>
+                            <label>Fecha envio: {{shipment.fecha_envio}}</label>
+                            <label>Fecha entrega: {{shipment.fecha_entrega}}</label>
+                            <label>Estado: {{shipment.estado_envio}}</label>
+                            <form action="/manage-shipments/{{shipment.id_envio}}" method="post">
+                                <input type="submit" value="Despachar">
+                            </form>
+                            <!-- {% for adress in adresses %}
+                                {% if adress.id_direccion == shipment.direccion_id_direccion %}
+                                    <label>Envio a: {{adress.ciudad}}, {{adress.pais}}. En {{adress.direccion}}</label>
+                                {% endif %}
+                            {% endfor %} -->
+                        </div>
+                        {% for order in orders %}
+                            {% if order.envio_id_envio == shipment.id_envio %}
+                                <div class="order">
+                                    <p>Id pedido: {{order.id_pedido}}</p>
+                                    <p>Total: {{order.total_pedido}}</p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                {% endfor %}
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{
+  "nombre_persona": "Santiago Reyes Gomez",
+  "numero_telefonico": 3170835965,
+  "tipo_persona": "ADMIN",
+  "correo_persona": "santi26reyes@gmail.com",
+  "contraseña": "saregom123"
+}
+
+{
+  "pais": "Colombia",
+  "ciudad": "Bogota",
+  "departamento": "Bogota",
+  "codigo_postal": 111111,
+  "direccion": "Cra 53C #128A - 47",
+  "complemento": "Piso 3",
+  "persona_id_persona": "1"
+}
+
+{
+  "nombre_producto": "Camisa hombre talla M",
+  "categoria": "Camisas",
+  "talla": "M",
+  "marca": "Adidas",
+  "precio": 20000,
+  "cantidad_disponible": 5
+}
+{
+  "nombre_producto": "Pantalon hombre talla M",
+  "categoria": "Pantalones",
+  "talla": "M",
+  "marca": "Adidas",
+  "precio": 50000,
+  "cantidad_disponible": 6
+}

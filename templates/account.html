@@ -1,0 +1,56 @@
+{% extends 'home.html' %}
+{% block title %} Cuenta {% endblock %}
+
+{% block front_page %}
+{% endblock %}
+
+{% block content %} 
+    <div class='body-profile'>
+        <div class='cont-profile'>
+            <div class='div-avatar-father'>
+                <div class='div-avatar'>
+                    <img class='avatar' src='static/img/avatar.png' alt='Profile'></img>
+                </div> 
+            </div>
+            <div class='profile-info'>
+                <div class='profile-head'>
+                    <p class='name-profile'>{{user.nombre_persona}}</p>
+                    <label>{{user.tipo_persona}}</label>
+                    <hr/>
+                </div>
+                <div class='profile-body'>
+                    <div class='row row-cols-2'>
+                        <div class='col'>
+                            <label class='th'>Correo</label>
+                        </div>
+                        <div class='col'>
+                            <label>{{user.correo_persona}}</label>
+                        </div>
+                        <div class='col'>
+                            <label class='th'>Pais - ciudad</label>
+                        </div>
+                        <div class='col'>
+                            <label>{{adress.pais}} - {{adress.ciudad}}</label>
+                        </div>
+                        <div class='col'>
+                            <label class='th'>Dirección</label>
+                        </div>
+                        <div class='col'>
+                            <label>{{adress.direccion}}</label>
+                        </div>
+                        <div class='col'>
+                            <label class='th'>Num. Telefono</label>
+                        </div>
+                        <div class='col'>
+                            <label>{{user.numero_telefonico}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class='profile-footer'>
+                    <a class="txt" href="/logout"><button class="btn-profile btn-logout">Salir</button></a>
+                    <a class="txt" href="/update-account"><button class="btn-profile btn-home">Actualizar</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

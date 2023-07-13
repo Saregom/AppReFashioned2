@@ -1,0 +1,43 @@
+{% extends 'home.html' %}
+{% block title %} Pedidos {% endblock %}
+
+{% block front_page %}
+{% endblock %}
+
+{% block content %} 
+    <div class="container-page">
+        <aside class="aside-left">
+            <h4>Filtros</h4>
+            <h6>Fecha</h6>
+                <input type="date" name="" id="">
+        </aside>
+
+        <main class="main-page">
+            <h3>Mis pedidos</h3>
+            <div class="div-orders">
+                <div class="order">
+                    {% for order in orders %}
+                        <div class="order-header">
+                            <label>Id pedido: {{order.id_pedido}}</label>
+                            <label>Fecha: {{order.fecha_pedido}}</label>
+                            <label>Total: {{order.total_pedido}}</label>
+                        </div>
+                        {% for detail in orderDetails %}
+                            {% if detail.pedido_id_pedido == order.id_pedido %}
+                                {% for product in products %}
+                                    {% if product.id_producto == detail.producto_id_producto %}
+                                        <div class="product">
+                                            <p>Nombre: {{product.nombre_producto}}</p>
+                                            <p>Precio: {{product.precio}}</p>
+                                            <p>Cantidad: {{detail.cantidad_ordenada}}</p>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}
